@@ -1,0 +1,3 @@
+# Simple App for Booking Friday Night Training ...
+
+... required (if at all) due to restrictions caused by Covid
