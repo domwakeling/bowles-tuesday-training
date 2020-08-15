@@ -6,20 +6,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "//start": "next start",
-    "start": "next",
+    "start": "next start",
     "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoangvvo/nextjs-mongodb-app.git"
+    "url": "git+https://github.com/domwakeling/bowles-friday-training.git"
   },
   "author": "Dominic Wakeling",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoangvvo/nextjs-mongodb-app/issues"
+    "url": "https://github.com/domwakeling/bowles-friday-training/issues"
   },
-  "//homepage": "https://github.com/hoangvvo/nextjs-mongodb-app#readme",
+  "homepage": "https://github.com/domwakeling/bowles-friday-training.git#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",
