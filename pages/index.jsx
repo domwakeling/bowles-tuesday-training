@@ -71,6 +71,7 @@ const IndexPage = () => {
               </div>
               <p>
                 Do you want to
+                {' '}
                 <Link href="/addracer"><a>add another racer</a></Link>
                 ?
               </p>
@@ -88,6 +89,7 @@ const IndexPage = () => {
       ) : (
         <p>
           Please either
+          {' '}
           <Link href="/login"><a>sign in</a></Link>
           {' '}
           or
