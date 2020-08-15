@@ -28,6 +28,9 @@ const Racer = ({
             margin-right: 1.0rem;
             min-width: 200px;
           }
+          .clickable {
+            cursor: pointer;
+          }
           div:hover {
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
           }
@@ -35,7 +38,12 @@ const Racer = ({
       </style>
       {
         userid ? (
-          <div className="lozenge" role="menuitem" tabIndex={tabNum} onClick={() => clickhandler(userid, name)}>
+          <div
+            className="lozenge clickable"
+            role="menuitem"
+            tabIndex={tabNum}
+            onClick={() => clickhandler(userid, name)}
+          >
             {name}
           </div>
         ) : (

@@ -6,7 +6,7 @@ import { useCurrentUser } from '../lib/hooks';
 import Copyright from './copyright';
 import { ToastContainer } from './toast';
 
-export default ({ children }) => {
+const Layout = ({ children }) => {
   const [user, { mutate }] = useCurrentUser();
   const handleLogout = async () => {
     await fetch('/api/auth', {
@@ -226,3 +226,5 @@ export default ({ children }) => {
     </>
   );
 };
+
+export default Layout;
