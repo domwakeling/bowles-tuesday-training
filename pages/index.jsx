@@ -79,6 +79,7 @@ const IndexPage = () => {
           ) : (
             <p>
               Please
+              {' '}
               <Link href="/addracer"><a>add a racer</a></Link>
               .
             </p>
