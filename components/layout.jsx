@@ -114,11 +114,11 @@ const Layout = ({ children }) => {
           }
           input {
             border: 1px solid #d79022;
-            font-size: 1.1rem;
-            min-width: 25rem;
+            min-width: 20rem;
             margin-bottom: 0.75rem;
             border-radius: 0.25rem;
             padding: 0.5rem 0 0.5rem 0.2rem;
+            font-size: 1rem;
           }
           label {
             font-size: 1.5rem;
@@ -174,6 +174,21 @@ const Layout = ({ children }) => {
             margin-top: 1rem;
             padding: 3rem;
             color: #888;
+          }
+          @media (max-width: 335px) {
+            input {
+              min-width: 15rem;
+            }
+          }
+          @media (min-width: 336px) and (max-width: 365px) {
+            input {
+              min-width: 17rem !important;
+            }
+          }
+          @media (min-width: 366px) and (max-width: 400px) {
+            input {
+              min-width: 18rem !important;
+            }
           }
         `}
       </style>

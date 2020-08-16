@@ -4,8 +4,6 @@ import Router from 'next/router';
 import { toast } from '../../components/toast';
 
 const ForgetPasswordPage = () => {
-  // const [errorMsg, setErrorMsg] = useState('');
-
   async function handleSubmit(e) {
     e.preventDefault(e);
 
