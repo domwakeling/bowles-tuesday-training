@@ -30,6 +30,7 @@ const Bookings = () => {
           {ds[1]}
         </h2>
         <p>loading...</p>
+        <br />
       </div>
     );
   }

@@ -51,8 +51,10 @@ const IndexPage = () => {
                 {' '}
                 {user.racers.length === 1 ? 'racer' : 'racers'}
                 {' '}
-                on your account. Tap/click
-                on a racer&apos;s name to add or remove them from the training list.
+                on your account. Do you want to
+                {' '}
+                <Link href="/addracer"><a>add another racer</a></Link>
+                ?
               </p>
               <div className="racerlist">
                 {
@@ -70,10 +72,7 @@ const IndexPage = () => {
                 }
               </div>
               <p>
-                Do you want to
-                {' '}
-                <Link href="/addracer"><a>add another racer</a></Link>
-                ?
+                Tap/click on a racer&apos;s name above to add or remove them from the training list.
               </p>
             </div>
           ) : (
@@ -88,16 +87,25 @@ const IndexPage = () => {
           <Bookings />
         </>
       ) : (
-        <p>
-          Please either
-          {' '}
-          <Link href="/login"><a>sign in</a></Link>
-          {' '}
-          or
-          {' '}
-          <Link href="/signup"><a>sign up</a></Link>
-          .
-        </p>
+        <>
+          <p>
+            Please either
+            {' '}
+            <Link href="/login"><a>sign in</a></Link>
+            {' '}
+            or
+            {' '}
+            <Link href="/signup"><a>sign up</a></Link>
+            .
+          </p>
+          <br />
+          <h2>How it works</h2>
+          <ol className="number-circle-list number-circle-list--primary-color">
+            <li className="number-circle-list--list-item">Create an account</li>
+            <li className="number-circle-list--list-item">Add racers to your account</li>
+            <li className="number-circle-list--list-item">Add your racers to the booking list</li>
+          </ol>
+        </>
       )}
     </div>
   );

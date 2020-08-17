@@ -120,7 +120,7 @@ const Layout = ({ children }) => {
             padding: 0.5rem 0 0.5rem 0.2rem;
             font-size: 1rem;
           }
-          label {
+          label, .circle {
             font-size: 1.5rem;
             display: inline-block;
             background-color: #394c8f;
@@ -132,7 +132,6 @@ const Layout = ({ children }) => {
             margin-right: 0.75rem;
             position: relative;
           }
-          
           header {
             border-bottom: 1px solid #d8d8d8;
             background-color: #394C8F;
@@ -188,6 +187,42 @@ const Layout = ({ children }) => {
           @media (min-width: 366px) and (max-width: 400px) {
             input {
               min-width: 18rem !important;
+            }
+          }
+          .number-circle-list {
+            list-style: none;
+            padding-left: 1rem;
+            counter-reset: circle-counter;
+          }
+
+          .number-circle-list--list-item {
+            counter-increment: circle-counter;
+            margin-bottom: 0.25rem;
+          }
+          .number-circle-list--list-item:before {
+            content: counter(circle-counter);
+            background-color: gray;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 0.75rem;
+            line-height: 1.5rem;
+            color: $default-color;
+            text-align: center;
+            margin-right: 0.5rem;
+            position: relative;
+            top: -2px;
+          }
+          .number-circle-list--list-item:last-child {
+            margin-bottom: 0;
+          }
+          .number-circle-list--list-item > .number-circle-list--list-item {
+            margin-left: 0.25rem;
+          }
+          .number-circle-list--primary-color > .number-circle-list--list-item:before {
+              background-color: #394C8F;
+              color: white;
             }
           }
         `}
