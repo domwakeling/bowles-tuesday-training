@@ -5,25 +5,25 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-  const forFriday = req.query.week;
+  const forTuesday = req.query.week;
 
   const bookings = await req.db
     .collection('bookings')
     .findOne({
-      forWeek: forFriday,
+      forWeek: forTuesday,
     });
 
   res.send(bookings ? bookings.racers : []);
 });
 
 handler.post(async (req, res) => {
-  const forFriday = req.query.week;
+  const forTuesday = req.query.week;
   const { id, name } = req.body;
 
   const bookings = await req.db
     .collection('bookings')
     .findOne({
-      forWeek: forFriday,
+      forWeek: forTuesday,
     });
 
   const racersCount = bookings ? bookings.racers.length : 0;
@@ -35,14 +35,14 @@ handler.post(async (req, res) => {
     await req.db
       .collection('bookings')
       .insertOne({
-        forWeek: forFriday,
+        forWeek: forTuesday,
         racers: [],
         expireAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
       });
   }
 
   // space and racer wasn't found
-  if (racersCount >= 15 && !racerFound) {
+  if (racersCount >= 6 && !racerFound) {
     res.status(400);
     res.send('No places available');
     res.end();
@@ -51,10 +51,10 @@ handler.post(async (req, res) => {
   }
 
   // no space and racer wasn't found
-  if (racersCount < 15 && !racerFound) {
+  if (racersCount < 6 && !racerFound) {
     await req.db.collection('bookings')
       .updateOne(
-        { forWeek: forFriday },
+        { forWeek: forTuesday },
         { $addToSet: { racers: { userid: id, name } } },
       );
     res.end('ok');
@@ -64,7 +64,7 @@ handler.post(async (req, res) => {
   // racer was found, omit them
   await req.db.collection('bookings')
     .updateOne(
-      { forWeek: forFriday },
+      { forWeek: forTuesday },
       { $pull: { racers: { userid: id, name } } },
     );
 

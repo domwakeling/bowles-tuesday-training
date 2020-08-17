@@ -1,7 +1,7 @@
 {
-  "name": "bowles-training-app",
+  "name": "bowles-training-app-2",
   "version": "1.0.0",
-  "description": "Friday training booking app",
+  "description": "Tuesday training booking app",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/domwakeling/bowles-friday-training.git"
+    "url": "git+https://github.com/domwakeling/bowles-tuesday-training.git"
   },
   "author": "Dominic Wakeling",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/domwakeling/bowles-friday-training/issues"
+    "url": "https://github.com/domwakeling/bowles-tuesday-training/issues"
   },
-  "homepage": "https://github.com/domwakeling/bowles-friday-training.git#readme",
+  "homepage": "https://github.com/domwakeling/bowles-tuesday-training.git#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",

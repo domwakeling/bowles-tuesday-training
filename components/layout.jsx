@@ -228,7 +228,7 @@ const Layout = ({ children }) => {
         `}
       </style>
       <Head>
-        <title>Bowles SRC - Friday Training Sessions</title>
+        <title>Bowles SRC - Tuesday Training Sessions</title>
         <meta
           key="viewport"
           name="viewport"
@@ -236,9 +236,9 @@ const Layout = ({ children }) => {
         />
         <meta
           name="description"
-          content="Booking for Bowles Ski Racing Club Friday night training sessions during Covid limitations"
+          content="Booking for Bowles Ski Racing Club Tuesday night training sessions during Covid limitations"
         />
-        <meta property="og:title" content="Bowles SRC - Friday Training Sessions" />
+        <meta property="og:title" content="Bowles SRC - Tuesday Training Sessions" />
       </Head>
       <header>
         <ToastContainer align="right" position="top" />

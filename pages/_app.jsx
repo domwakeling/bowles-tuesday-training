@@ -6,7 +6,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
-        <title>Bowles SRC - Friday Training Sessions</title>
+        <title>Bowles SRC - Tuesday Training Sessions</title>
         <link rel="shortcut icon" href="favicon.png" />
       </Head>
       <Component {...pageProps} />

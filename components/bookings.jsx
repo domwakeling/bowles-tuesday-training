@@ -4,10 +4,10 @@ import { useCurrentUser } from '../lib/hooks';
 import Racer from './racer';
 import fetcher from '../lib/fetch';
 
-export const getFriday = () => {
+export const getTuesday = () => {
   const date = new Date();
   // eslint-disable-next-line no-mixed-operators
-  date.setDate(date.getDate() + (12 - date.getDay()) % 7);
+  date.setDate(date.getDate() + (9 - date.getDay()) % 7);
   const ds0 = (`0${date.getDate()}`).slice(-2) + (`0${date.getMonth()}`).slice(-2) + date.getFullYear();
   let ds1 = date.toDateString().split(' ');
   ds1 = `${ds1[2]} ${ds1[1]} ${ds1[3]}`;
@@ -16,7 +16,7 @@ export const getFriday = () => {
 
 const Bookings = () => {
   const [user] = useCurrentUser();
-  const ds = getFriday();
+  const ds = getTuesday();
   const { data, error } = useSWR(`/api/booking/${ds[0]}`, fetcher, { refreshInterval: 1000 });
 
   if (error) return <div>failed to load</div>;
@@ -35,7 +35,7 @@ const Bookings = () => {
     );
   }
 
-  const idxs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const idxs = [0, 1, 2, 3, 4, 5];
   return (
     <div>
       <h2>

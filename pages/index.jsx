@@ -2,14 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import { useCurrentUser } from '../lib/hooks';
 import Racer from '../components/racer';
-import Bookings, { getFriday } from '../components/bookings';
+import Bookings, { getTuesday } from '../components/bookings';
 import { toast } from '../components/toast';
 
 const IndexPage = () => {
   const [user] = useCurrentUser();
 
   async function handleRacerClick(id, name) {
-    const ds = getFriday()[0]; // gets the 8-digit datestring for this Friday
+    const ds = getTuesday()[0]; // gets the 8-digit datestring for this Tuesday
     const body = {
       id,
       name,
@@ -36,7 +36,7 @@ const IndexPage = () => {
   return (
     <div>
       <h2>
-        Friday Night Training
+        Tuesday Night Training
       </h2>
       { user ? (
         <>
@@ -105,6 +105,10 @@ const IndexPage = () => {
             <li className="number-circle-list--list-item">Add racers to your account</li>
             <li className="number-circle-list--list-item">Add your racers to the booking list</li>
           </ol>
+          <p>
+            If you already have an account for Friday training, you can use it to sign in here (no
+            need for a separate account!)
+          </p>
         </>
       )}
     </div>
