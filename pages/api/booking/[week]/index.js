@@ -18,7 +18,7 @@ handler.get(async (req, res) => {
 
 handler.post(async (req, res) => {
   const forTuesday = req.query.week;
-  const { id, name } = req.body;
+  const { id, name, prev } = req.body;
 
   const bookings = await req.db
     .collection('bookings')
@@ -41,7 +41,7 @@ handler.post(async (req, res) => {
       });
   }
 
-  // space and racer wasn't found
+  // no space and racer wasn't found
   if (racersCount >= 6 && !racerFound) {
     res.status(400);
     res.send('No places available');
@@ -50,8 +50,25 @@ handler.post(async (req, res) => {
     return;
   }
 
-  // no space and racer wasn't found
+  // space and racer wasn't found
   if (racersCount < 6 && !racerFound) {
+    // check if it's Weds/Thurs  ...
+    const today = new Date().getDay();
+    if (today === 3 || today === 4) {
+      // look for previous week's booking
+      const prevWeek = await req.db.collection('bookings').findOne({
+        forWeek: prev,
+      });
+      // check there is an entry and find out if this racer was booked in
+      if (prevWeek
+        && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
+        res.status(409);
+        res.send('Racer booked previous week.');
+        res.end();
+        return;
+      }
+    }
+
     await req.db.collection('bookings')
       .updateOne(
         { forWeek: forTuesday },
