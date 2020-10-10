@@ -116,9 +116,16 @@ const IndexPage = () => {
             <li className="number-circle-list--list-item">Add racers to your account</li>
             <li className="number-circle-list--list-item">Add your racers to the booking list</li>
           </ol>
+          <br />
           <p>
             If you already have an account for Friday training, you can use it to sign in here (no
             need for a separate account!)
+          </p>
+          <p>
+            Or you can
+            {' '}
+            <Link href="/forget-password"><a>reset your password</a></Link>
+            ?
           </p>
         </>
       )}
