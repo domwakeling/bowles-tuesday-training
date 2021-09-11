@@ -18,7 +18,9 @@ handler.get(async (req, res) => {
 
 handler.post(async (req, res) => {
   const forTuesday = req.query.week;
-  const { id, name, prev } = req.body;
+  const {
+    id, name, prev, club,
+  } = req.body;
 
   const bookings = await req.db
     .collection('bookings')
@@ -46,7 +48,6 @@ handler.post(async (req, res) => {
     res.status(400);
     res.send('No places available');
     res.end();
-    // res.send("No places available")
     return;
   }
 
@@ -64,6 +65,13 @@ handler.post(async (req, res) => {
         && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
         res.status(409);
         res.send('Racer booked previous week.');
+        res.end();
+        return;
+      }
+      // check whether the racer is from a different club
+      if (club !== 'Bowles') {
+        res.status(412);
+        res.send('Racer represents another club.');
         res.end();
         return;
       }

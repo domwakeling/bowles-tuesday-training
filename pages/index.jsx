@@ -9,13 +9,14 @@ import { toast } from '../components/toast';
 const IndexPage = () => {
   const [user] = useCurrentUser();
 
-  async function handleRacerClick(id, name) {
+  async function handleRacerClick(id, name, club) {
     const ds = getTuesday()[0]; // gets the 8-digit datestring for this Tuesday
     const prev = getTuesday()[2];
     const body = {
       id,
       name,
       prev,
+      club,
     };
     const res = await fetch(`/api/booking/${ds}`, {
       method: 'POST',
@@ -31,8 +32,14 @@ const IndexPage = () => {
         duration: 1,
       });
     } else if (res.status === 409) {
-      toast.notify(`That racer trained last Tuesday.In order to ensure all members get a chance to
+      toast.notify(`That racer trained last Tuesday. In order to ensure all members get a chance to
           train, please wait until Friday before booking them in to this Tuesday's session.`, {
+        type: 'warn',
+        title: 'Warning',
+      });
+    } else if (res.status === 412) {
+      toast.notify(`That racer represents another club at races, please wait until Friday before
+          booking them in to this Tuesday's session.`, {
         type: 'warn',
         title: 'Warning',
       });
@@ -74,10 +81,11 @@ const IndexPage = () => {
                       // eslint-disable-next-line react/no-array-index-key
                       key={idx}
                       tabNum={idx}
-                      name={racer}
+                      name={racer.name}
                       status="normal"
                       clickhandler={handleRacerClick}
                       userid={user._id}
+                      club={racer.club}
                     />
                   ))
                 }
