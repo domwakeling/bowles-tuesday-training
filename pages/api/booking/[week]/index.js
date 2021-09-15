@@ -54,8 +54,10 @@ handler.post(async (req, res) => {
   // space and racer wasn't found
   if (racersCount < 6 && !racerFound) {
     // check if it's Weds/Thurs  ...
-    const today = new Date().getDay();
-    if (today === 3 || today === 4) {
+    const today = new Date();
+    const weekday = today.getDay();
+    const hour = today.getHours();
+    if (weekday === 3 || weekday === 4 || (weekday === 2 && hour > 17)) {
       // look for previous week's booking
       const prevWeek = await req.db.collection('bookings').findOne({
         forWeek: prev,
