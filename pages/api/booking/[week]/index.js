@@ -52,7 +52,7 @@ handler.post(async (req, res) => {
   }
 
   // space and racer wasn't found
-  if (racersCount < 6 && !racerFound) {
+  if (racersCount < 8 && !racerFound) {
     // check if it's Weds/Thurs  ...
     const today = new Date();
     const weekday = today.getDay();
