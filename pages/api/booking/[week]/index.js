@@ -22,6 +22,8 @@ handler.post(async (req, res) => {
     id, name, prev, club,
   } = req.body;
 
+  console.log('booking request info\n', req.body, '---\n');
+
   const bookings = await req.db
     .collection('bookings')
     .findOne({
