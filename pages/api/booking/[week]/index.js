@@ -15,7 +15,7 @@ handler.get(async (req, res) => {
   }
 
   // eslint-disable-next-line
-  console.log('booking info request from', req.user.email);
+  console.log('booking info request from:', req.user.email);
 
   const bookings = await req.db
     .collection('bookings')
