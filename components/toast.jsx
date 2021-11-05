@@ -1,52 +1,57 @@
+/* eslint-disable react/destructuring-assignment */
 /**
- * Modified from work by Ashwani Arya 
+ * Modified from work by Ashwani Arya
  */
 
-import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
 
 const config = {
   success: {
     primaryColor: '#2CC51F',
     secondaryColor: 'green',
-    label: 'Success notification!'
+    label: 'Success notification!',
   },
   info: {
     primaryColor: 'grey',
     secondaryColor: 'grey',
-    label: 'Info notification!'
+    label: 'Info notification!',
   },
   error: {
     primaryColor: '#F55C2C',
     secondaryColor: 'red',
-    label: 'Error notification!'
+    label: 'Error notification!',
   },
   warn: {
     primaryColor: 'orange',
     secondaryColor: 'orange',
-    label: 'Warning notification!'
-  }
-}
+    label: 'Warning notification!',
+  },
+};
 
 class ToastTop extends React.Component {
   componentDidMount() {
-    this.timeout = setTimeout(()=>{ 
-      let tId = this.props.targetId;
-      this.remove(tId); }, this.props.duration*1000);
+    this.timeout = setTimeout(() => {
+      const tId = this.props.targetId;
+      this.remove(tId);
+    }, this.props.duration * 1000);
   }
-  componentWillUnmount(){
-    if(this.timeout){
-      clearTimeout(this.timeout)
+
+  componentWillUnmount() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
     }
   }
+
   remove(id) {
-    unmountComponentAtNode(document.getElementById(id))
-    if(this.props.onRemove){
+    unmountComponentAtNode(document.getElementById(id));
+    if (this.props.onRemove) {
       this.props.onRemove();
     }
   }
-  render(){
-    let props = this.props;
+
+  render() {
+    const { props } = this;
     return (
       <div className="toast-message-container">
         <div id="toast-message" className="toast-message">
@@ -55,7 +60,8 @@ class ToastTop extends React.Component {
           <div>{ props.message }</div>
         </div>
         {/* Static Styling */}
-        <style jsx>{`
+        <style jsx>
+          {`
           .toast-message {
             flex:1;
             background-color: #fff;
@@ -72,19 +78,21 @@ class ToastTop extends React.Component {
             font-weight: bold;
             font-size: 1.2rem;
           }
-      `}</style>
+      `}
+        </style>
         {/* Dynamic Styling */}
-        <style jsx>{`
+        <style jsx>
+          {`
           @keyframes SlideInOutTop {
             0%{
               transform: translateY(-40px);
               opacity:0;
             }
-            ${ props.transitionPercentage }% {
+            ${props.transitionPercentage}% {
               transform: translateY(0px);
               opacity:1;
             }
-            ${ (100-props.transitionPercentage)}% {
+            ${(100 - props.transitionPercentage)}% {
               transform: translateY(0px);
               opacity:1;
             }
@@ -107,61 +115,64 @@ class ToastTop extends React.Component {
               width: 300px;
             }
           }
-        `}</style>
+        `}
+
+        </style>
       </div>
-    )
+    );
   }
 }
-// toast object 
+// toast object
 export const toast = {
   remove: (id) => {
-    let comId = id || 'toast-container'
-    let doc = document.getElementById(comId)
-    if(doc)
-      unmountComponentAtNode(doc)
+    const comId = id || 'toast-container';
+    const doc = document.getElementById(comId);
+    if (doc) { unmountComponentAtNode(doc); }
   },
-  notify: ( message , options = null) => {
-    let duration = 5
-    let type = 'info'
-    let targetId = "toast-container"
-    let title = null
-    let position = 'top'
-    let onRemove = null
-    if( options ){
-      if( options.duration)
-        duration = options.duration
-      if(options.type){
+  notify: (message, options = null) => {
+    let duration = 5;
+    let type = 'info';
+    let targetId = 'toast-container';
+    let title = null;
+    // eslint-disable-next-line no-unused-vars
+    const position = 'top';
+    let onRemove = null;
+    if (options) {
+      if (options.duration) { duration = options.duration; }
+      if (options.type) {
         type = options.type;
       }
-      if(options.targetId) {
+      if (options.targetId) {
         targetId = options.targetId;
       }
-      if(options.title) {
-        title = options.title
+      if (options.title) {
+        title = options.title;
       }
-      if(options.onRemove) {
-        onRemove = options.onRemove
+      if (options.onRemove) {
+        onRemove = options.onRemove;
       }
-    } 
-    let trasitionPercentage = 0.3*(100/duration)
-      render(<ToastTop 
-        message={message} 
-        slideIn={true} 
-        type={type || 'info'}
-        transitionPercentage={trasitionPercentage} 
-        targetId={targetId}
-        title={title}
-        onRemove={onRemove}
-        duration={duration} />, document.getElementById(targetId));
-  }
-}
+    }
+    const trasitionPercentage = 0.3 * (100 / duration);
+    render(<ToastTop
+      message={message}
+      slideIn
+      type={type || 'info'}
+      transitionPercentage={trasitionPercentage}
+      targetId={targetId}
+      title={title}
+      onRemove={onRemove}
+      duration={duration}
+    />, document.getElementById(targetId));
+  },
+};
 
 // Toast container
-export const ToastContainer = ( props ) => {
-  let id = props.id || 'toast-container'
+export const ToastContainer = (props) => {
+  const id = props.id || 'toast-container';
   return (
     <div id={id} className="toast-container">
-      <style jsx>{`
+      <style jsx>
+        {`
         .toast-container {
           position: fixed;
           width: 100%;
@@ -179,16 +190,19 @@ export const ToastContainer = ( props ) => {
           display: flex;
           flex-direction: column;
           align-items: ${
-            (()=> { 
-              if(!props.align) return 'right'; 
-              if(props.align === 'center') return 'center';
-              if(props.align === 'left') return 'flex-start';
-              if(props.align === 'right') return 'flex-end';
+            (() => {
+              if (!props.align) return 'right';
+              if (props.align === 'center') return 'center';
+              if (props.align === 'left') return 'flex-start';
+              if (props.align === 'right') return 'flex-end';
+              return 'right';
             })()
           };
           left: 0px;
         }
-      `}</style>
+      `}
+
+      </style>
     </div>
-  )
-}
+  );
+};
