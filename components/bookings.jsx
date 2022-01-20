@@ -46,10 +46,10 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      { ds[0] === '28122021' ? (
+      {(ds[0] === '25012022' || ds[0] === '01022022') ? (
         <div className="alert-text">
-          <p>There is no race club from Friday 24th &amp; Friday 31st December (inclusive).</p>
-          <p>Training will resume in January!</p>
+          <p>Unfortunately there is no race club at the moment.</p>
+          <p>Please keep an eye on Facebook or the WhatsApp chat for updates.</p>
         </div>
       ) : (
         <>
