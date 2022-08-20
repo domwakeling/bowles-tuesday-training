@@ -46,9 +46,12 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '25012022' || ds[0] === '01022022') ? (
+      {(ds[0] === '23082022' || ds[0] === '3008022') ? (
         <div className="alert-text">
-          <p>Unfortunately there is no race club at the moment.</p>
+          <p>
+            Unfortunately the slope is shut for maintenance until the end of August. The next
+            Tuesday training session with by 6th September.
+          </p>
           <p>Please keep an eye on Facebook or the WhatsApp chat for updates.</p>
         </div>
       ) : (
