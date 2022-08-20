@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 /**
  * Modified from work by Ashwani Arya
  */
@@ -31,10 +30,11 @@ const config = {
 
 class ToastTop extends React.Component {
   componentDidMount() {
+    const { duration } = this.props;
     this.timeout = setTimeout(() => {
-      const tId = this.props.targetId;
-      this.remove(tId);
-    }, this.props.duration * 1000);
+      const { targetId } = this.props;
+      this.remove(targetId);
+    }, duration * 1000);
   }
 
   componentWillUnmount() {
@@ -45,19 +45,22 @@ class ToastTop extends React.Component {
 
   remove(id) {
     unmountComponentAtNode(document.getElementById(id));
-    if (this.props.onRemove) {
-      this.props.onRemove();
+    const { onRemove } = this.props;
+    if (onRemove) {
+      onRemove();
     }
   }
 
   render() {
-    const { props } = this;
+    const {
+      title, type, message, duration,
+    } = this.props;
     return (
       <div className="toast-message-container">
         <div id="toast-message" className="toast-message">
           {/* Message to be added here */}
-          <div className="title">{props.title || config[props.type].label}</div>
-          <div>{ props.message }</div>
+          <div className="title">{title || config[type].label}</div>
+          <div>{message}</div>
         </div>
         {/* Static Styling */}
         <style jsx>
@@ -69,54 +72,53 @@ class ToastTop extends React.Component {
             border-radius: 5px;
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
-            border-left: 12px solid ${config[props.type].primaryColor};
+            border-left: 12px solid ${config[type].primaryColor};
           }
           .title {
             margin-bottom: 8px;
-            color: ${config[props.type].primaryColor};
+            color: ${config[type].primaryColor};
             font-family: 'Playfair Display', serif;
             font-weight: bold;
             font-size: 1.2rem;
           }
-      `}
+        `}
         </style>
         {/* Dynamic Styling */}
         <style jsx>
           {`
-          @keyframes SlideInOutTop {
-            0%{
-              transform: translateY(-40px);
-              opacity:0;
+            @keyframes SlideInOutTop {
+              0%{
+                transform: translateY(-40px);
+                opacity:0;
+              }
+              6% {
+                transform: translateY(0px);
+                opacity:1;
+              }
+              94% {
+                transform: translateY(0px);
+                opacity:1;
+              }
+              100% {
+                transform: translateY(-40px);
+                opacity:0;
+              }
             }
-            ${props.transitionPercentage}% {
-              transform: translateY(0px);
-              opacity:1;
-            }
-            ${(100 - props.transitionPercentage)}% {
-              transform: translateY(0px);
-              opacity:1;
-            }
-            100% {
-              transform: translateY(-40px);
-              opacity:0;
-            }
-          }
-          .toast-message-container {
-              color: #444;
-              width: 23rem;
-              max-width: 23rem;
-              box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
-              margin: 0px 1rem;
-              border-radius: 5px;
-              animation: SlideInOutTop ${props.duration}s ease-in-out;
-          }
-          @media (max-width: 400px) {
             .toast-message-container {
-              width: 300px;
+                color: #444;
+                width: 23rem;
+                max-width: 23rem;
+                box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+                margin: 0px 1rem;
+                border-radius: 5px;
+                animation: SlideInOutTop ${duration}s ease-in-out;
             }
-          }
+            @media (max-width: 400px) {
+              .toast-message-container {
+                width: 300px;
+              }
+            }
         `}
-
         </style>
       </div>
     );
@@ -127,18 +129,19 @@ export const toast = {
   remove: (id) => {
     const comId = id || 'toast-container';
     const doc = document.getElementById(comId);
-    if (doc) { unmountComponentAtNode(doc); }
+    if (doc) unmountComponentAtNode(doc);
   },
   notify: (message, options = null) => {
     let duration = 5;
     let type = 'info';
     let targetId = 'toast-container';
     let title = null;
-    // eslint-disable-next-line no-unused-vars
-    const position = 'top';
+    // const position = 'top';
     let onRemove = null;
     if (options) {
-      if (options.duration) { duration = options.duration; }
+      if (options.duration) {
+        duration = options.duration;
+      }
       if (options.type) {
         type = options.type;
       }
@@ -167,10 +170,10 @@ export const toast = {
 };
 
 // Toast container
-export const ToastContainer = (props) => {
-  const id = props.id || 'toast-container';
+export const ToastContainer = ({ id, align }) => {
+  const useId = id || 'toast-container';
   return (
-    <div id={id} className="toast-container">
+    <div id={useId} className="toast-container">
       <style jsx>
         {`
         .toast-container {
@@ -189,19 +192,17 @@ export const ToastContainer = (props) => {
           top: 20px;
           display: flex;
           flex-direction: column;
-          align-items: ${
-            (() => {
-              if (!props.align) return 'right';
-              if (props.align === 'center') return 'center';
-              if (props.align === 'left') return 'flex-start';
-              if (props.align === 'right') return 'flex-end';
-              return 'right';
-            })()
+          align-items: ${(() => {
+            if (!align) return 'flex-end';
+            if (align === 'center') return 'center';
+            if (align === 'left') return 'flex-start';
+            if (align === 'right') return 'flex-end';
+            return 'flex-end';
+          })()
           };
           left: 0px;
         }
       `}
-
       </style>
     </div>
   );
