@@ -50,9 +50,8 @@ const Bookings = () => {
         <div className="alert-text">
           <p>
             Unfortunately the slope is shut for maintenance until the end of August. The next
-            Tuesday training session with by 6th September.
+            Tuesday training session will by 6th September.
           </p>
-          <p>Please keep an eye on Facebook or the WhatsApp chat for updates.</p>
         </div>
       ) : (
         <>
