@@ -39,6 +39,9 @@ const Bookings = () => {
   }
 
   const idxs = [0, 1, 2, 3, 4, 5, 6, 7];
+
+  const firstTues = parseInt(ds[0].substring(0, 2), 10) <= 7;
+
   return (
     <div>
       <h2>
@@ -56,6 +59,15 @@ const Bookings = () => {
       ) : (
         <>
           <br />
+          { firstTues ? (
+            <div>
+              <p className="alert-text">
+                The first Tuesday training each month is an Over The Hill session,
+                reserved for over-18s
+              </p>
+              <br />
+            </div>
+          ) : ''}
           <div className="racerlist">
             {
               idxs.map((i) => (
