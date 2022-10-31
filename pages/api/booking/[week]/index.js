@@ -11,6 +11,7 @@ handler.get(async (req, res) => {
     // eslint-disable-next-line
     console.log('booking info requested without user/email; rejecting');
     res.send([]);
+    res.end();
     return;
   }
 
@@ -24,6 +25,7 @@ handler.get(async (req, res) => {
     });
 
   res.send(bookings ? bookings.racers : []);
+  res.end();
 });
 
 handler.post(async (req, res) => {
@@ -36,6 +38,7 @@ handler.post(async (req, res) => {
     // eslint-disable-next-line
     console.log('new booking requested without user/email; rejecting');
     res.send([]);
+    res.end();
     return;
   }
 
