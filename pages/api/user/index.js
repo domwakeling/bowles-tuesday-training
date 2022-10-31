@@ -6,7 +6,12 @@ const handler = nextConnect();
 
 handler.use(middleware);
 
-handler.get(async (req, res) => res.json({ user: extractUser(req) }));
+handler.get(async (req, res) => {
+  const user = extractUser(req);
+  // eslint-disable-next-line no-console
+  console.log('/api/user called, user:', user);
+  res.json({ user });
+});
 
 export const config = {
   api: {
