@@ -49,10 +49,10 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '23082022' || ds[0] === '13122022') ? (
+      {(ds[0] === '23082022' || ds[0] === '24012023') ? (
         <div className="alert-text">
           <p>
-            There will be no training on Tuesday 13th December
+            There will be no training on Tuesday 24th January
           </p>
         </div>
       ) : (
