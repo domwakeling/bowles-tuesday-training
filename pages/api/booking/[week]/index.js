@@ -55,7 +55,7 @@ handler.post(async (req, res) => {
   // eslint-disable-next-line max-len
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
-  // if no booking was found set one up; expire after 30 days (minmimse db size)
+  // if no booking was found set one up; expire after 30 days (minimise db size)
   if (!bookings) {
     await req.db
       .collection('bookings')
