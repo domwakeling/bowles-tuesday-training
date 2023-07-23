@@ -54,7 +54,7 @@ const AddRacerPage = () => {
           <p>
             Do you want to
             {' '}
-            <Link href="/addracer"><a>add another racer</a></Link>
+            <Link href="/addracer">add another racer</Link>
             ?
           </p>
         </div>
@@ -78,7 +78,7 @@ const AddRacerPage = () => {
       <p>
         Or
         {' '}
-        <Link href="/"><a>go back to the home page</a></Link>
+        <Link href="/">go back to the home page</Link>
         .
       </p>
     </>

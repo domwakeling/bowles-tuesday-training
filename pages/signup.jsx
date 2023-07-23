@@ -85,7 +85,7 @@ const SignupPage = () => {
         <p>
           If you already have an account, please
           {' '}
-          <Link href="/login"><a>sign in</a></Link>
+          <Link href="/login">sign in</Link>
           .
         </p>
         <p style={{ color: '#777', textAlign: 'center' }}>

@@ -73,11 +73,11 @@ const LoginPage = () => {
         <p>
           If you don&apos;t have an account, please
           {' '}
-          <Link href="/signup"><a>sign up</a></Link>
+          <Link href="/signup">sign up</Link>
           .
         </p>
         <p>
-          <Link href="/forget-password"><a>Forgotten password</a></Link>
+          <Link href="/forget-password">Forgotten password</Link>
           ?
         </p>
         <br />

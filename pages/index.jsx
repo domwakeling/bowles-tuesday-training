@@ -71,7 +71,7 @@ const IndexPage = () => {
                 {' '}
                 on your account. Do you want to
                 {' '}
-                <Link href="/addracer"><a>add another racer</a></Link>
+                <Link href="/addracer">add another racer</Link>
                 ?
               </p>
               <div className="racerlist">
@@ -99,7 +99,7 @@ const IndexPage = () => {
             <p>
               Please
               {' '}
-              <Link href="/addracer"><a>add a racer</a></Link>
+              <Link href="/addracer">add a racer</Link>
               .
             </p>
           )}
@@ -111,11 +111,11 @@ const IndexPage = () => {
           <p>
             Please either
             {' '}
-            <Link href="/login"><a>sign in</a></Link>
+            <Link href="/login">sign in</Link>
             {' '}
             or
             {' '}
-            <Link href="/signup"><a>sign up</a></Link>
+            <Link href="/signup">sign up</Link>
             .
           </p>
           <br />
@@ -133,7 +133,7 @@ const IndexPage = () => {
           <p>
             Or you can
             {' '}
-            <Link href="/forget-password"><a>reset your password</a></Link>
+            <Link href="/forget-password">reset your password</Link>
             ?
           </p>
         </>

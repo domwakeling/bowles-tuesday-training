@@ -1,4 +1,4 @@
-import { session, promisifyStore, expressSession } from 'next-session';
+import { session, expressSession } from 'next-session';
 import connectMongo from 'connect-mongo';
 
 const MongoStore = connectMongo(expressSession);
@@ -9,6 +9,6 @@ export default function getSession(req, res, next) {
     stringify: false,
   });
   return session({
-    store: promisifyStore(mongoStore),
+    store: mongoStore,
   })(req, res, next);
 }
