@@ -221,9 +221,8 @@ const Layout = ({ children }) => {
             margin-left: 0.25rem;
           }
           .number-circle-list--primary-color > .number-circle-list--list-item:before {
-              background-color: #394C8F;
-              color: white;
-            }
+            background-color: #394C8F;
+            color: white;
           }
           p.alert-text, div.alert-text {
             border: 2px solid #394C8F;
