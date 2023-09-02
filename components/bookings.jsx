@@ -67,6 +67,12 @@ const Bookings = () => {
               <br />
             </div>
           ) : ''}
+          {(ds[0] === '05092023' || ds[0] === '12092023') ? (
+            <p className="alert-text">
+              Please note that from the start of September, Tuesday training will be
+              from 6-7pm
+            </p>
+          ) : '' }
           <div className="racerlist">
             {
               idxs.map((i) => (
