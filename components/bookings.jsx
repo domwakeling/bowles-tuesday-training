@@ -49,10 +49,11 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '28112023' || ds[0] === '16012024') ? (
+      {(ds[0] === '20082024' || ds[0] === '27082024') ? (
         <div className="alert-text">
           <p>
-            There will be no training on Tuesday 16th January.
+            There slope is closed for maintenance from Monday 19th to Friday 30th August.
+            Training will resume as normal in September.
           </p>
         </div>
       ) : (
