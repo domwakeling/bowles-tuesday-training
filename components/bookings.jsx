@@ -49,7 +49,7 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '24122024' || ds[0] === '31232024') ? (
+      {(ds[0] === '24122024' || ds[0] === '31122024') ? (
         <div className="alert-text">
           <p>
             There will be no Tuesday training sessions on 24th or 31st December.
