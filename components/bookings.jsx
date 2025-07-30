@@ -49,11 +49,13 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '24122024' || ds[0] === '31122024') ? (
+      {(ds[0] === '12082025' || ds[0] === '19082025') ? (
         <div className="alert-text">
           <p>
-            There will be no Tuesday training sessions on 24th or 31st December.
-            Training will resume as normal in January.
+            The main slope at Bowles will be closed for maintenance from Monday 11th August to
+            Friday 22nd August. Therefore no Race Club on Tuesday 12th, Friday 15th, Tuesday 19th
+            and Friday 22nd.
+
           </p>
         </div>
       ) : (
