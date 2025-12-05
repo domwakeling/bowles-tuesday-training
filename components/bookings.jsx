@@ -49,14 +49,22 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '12082025' || ds[0] === '09092025') ? (
-        <div className="alert-text">
-          <p>
-            Training is cancelled for Tuesday 9th September, unfortunately none of the
-            coaches are available
-
-          </p>
-        </div>
+      {(ds[0] === '09122025' || ds[0] === '23122025') ? (
+        (ds[0] === '09122025') ? (
+          <div className="alert-text">
+            <p>
+              Training is cancelled for Tuesday 9th December, unfortunately none of the
+              coaches are available.
+            </p>
+          </div>
+        ) : (
+          <div className="alert-text">
+            <p>
+              Training is cancelled for Tuesday 23rd December, unfortunately Bowles centre
+              is using the slope.
+            </p>
+          </div>
+        )
       ) : (
         <>
           <br />
