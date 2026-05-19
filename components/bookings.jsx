@@ -49,12 +49,11 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '09122025' || ds[0] === '13012026') ? (
-        (ds[0] === '09122025') ? (
+      {(ds[0] === '26052026' || ds[0] === '13012026') ? (
+        (ds[0] === '26052026') ? (
           <div className="alert-text">
             <p>
-              Training is cancelled for Tuesday 9th December, unfortunately none of the
-              coaches are available.
+              There will be no Race Club on Tuesday 26th May due to slope maintenance.
             </p>
           </div>
         ) : (
