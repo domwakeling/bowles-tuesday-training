@@ -49,11 +49,11 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {(ds[0] === '26052026' || ds[0] === '13012026') ? (
-        (ds[0] === '26052026') ? (
+      {(ds[0] === '18082026' || ds[0] === '13012026') ? (
+        (ds[0] === '18082026') ? (
           <div className="alert-text">
             <p>
-              There will be no Race Club on Tuesday 26th May due to slope maintenance.
+              There will be no Race Club on Tuesday 18th August.
             </p>
           </div>
         ) : (
