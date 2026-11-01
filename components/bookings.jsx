@@ -49,6 +49,12 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
+      <p className="alert-text">
+        From the start of December
+        {'\''}
+        26, training booking will be via ClubPal. Please continue to book here for sessions in
+        November.
+      </p>
       {(ds[0] === '18082026' || ds[0] === '13012026') ? (
         (ds[0] === '18082026') ? (
           <div className="alert-text">
